@@ -91,12 +91,12 @@ export BUFFER_QUEUE_FULL_ACTION=${BUFFER_QUEUE_FULL_ACTION:-block}
 K8S_FILTER_REMOVE_KEYS="log,stream,MESSAGE,_SOURCE_REALTIME_TIMESTAMP,__REALTIME_TIMESTAMP,CONTAINER_ID,CONTAINER_ID_FULL,CONTAINER_NAME,PRIORITY,_BOOT_ID,_CAP_EFFECTIVE,_CMDLINE,_COMM,_EXE,_GID,_HOSTNAME,_MACHINE_ID,_PID,_SELINUX_CONTEXT,_SYSTEMD_CGROUP,_SYSTEMD_SLICE,_SYSTEMD_UNIT,_TRANSPORT,_UID,_AUDIT_LOGINUID,_AUDIT_SESSION,_SYSTEMD_OWNER_UID,_SYSTEMD_SESSION,_SYSTEMD_USER_UNIT,CODE_FILE,CODE_FUNCTION,CODE_LINE,ERRNO,MESSAGE_ID,RESULT,UNIT,_KERNEL_DEVICE,_KERNEL_SUBSYSTEM,_UDEV_SYSNAME,_UDEV_DEVNODE,_UDEV_DEVLINK,SYSLOG_FACILITY,SYSLOG_IDENTIFIER,SYSLOG_PID"
 export K8S_FILTER_REMOVE_KEYS ENABLE_ES_INDEX_NAME
 
-if [ -z $ES_HOST ]; then
-    echo "ERROR: Environment variable ES_HOST for Elasticsearch host name is not set."
+if [ -z $GRAYLOG_HOST ]; then
+    echo "ERROR: Environment variable GRAYLOG_HOST for Graylog host name is not set."
     exit 1
 fi
-if [ -z $ES_PORT ]; then
-    echo "ERROR: Environment variable ES_PORT for Elasticsearch port number is not set."
+if [ -z $GRAYLOG_PORT ]; then
+    echo "ERROR: Environment variable GRAYLOG_PORT for Graylog port number is not set."
     exit 1
 fi
 
@@ -107,8 +107,8 @@ if [ ! -s /var/run/secrets/kubernetes.io/serviceaccount/token ] ; then
 fi
 
 # How many outputs?
-# check ES_HOST vs. OPS_HOST; ES_PORT vs. OPS_PORT
-if [ "$ES_HOST" = ${OPS_HOST:-""} -a $ES_PORT -eq ${OPS_PORT:-0} ]; then
+# check GRAYLOG_HOST vs. OPS_HOST; GRAYLOG_PORT vs. OPS_PORT
+if [ "$GRAYLOG_HOST" = ${OPS_HOST:-""} -a $GRAYLOG_PORT -eq ${OPS_PORT:-0} ]; then
     # There is one output Elasticsearch
     NUM_OUTPUTS=1
     # Disable "output-operations.conf"

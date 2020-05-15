@@ -81,3 +81,5 @@ validate_email 0.1.6 http://github.com/perfectline/validates_email/tree/master
 validate_url 1.0.8 http://github.com/perfectline/validates_url/tree/master
 webfinger 1.1.0 https://github.com/nov/webfinger
 yajl-ruby 1.4.1 http://github.com/brianmario/yajl-ruby
+fluent-plugin-gelf-hs 1.0.8 https://github.com/hotschedules/fluent-plugin-gelf-hs
+gelf 3.1.0 https://github.com/graylog-labs/gelf-rb
